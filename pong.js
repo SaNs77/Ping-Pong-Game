@@ -24,9 +24,9 @@ const ball = {
   x: canvas.width / 2,
   y: canvas.height / 2,
   radius: 10,
-  velocityX: 7,
-  velocityY: 5,
-  speed: 5,
+  velocityX: 9,
+  velocityY: 7,
+  speed: 7,
   color: "RED",
 };
 
@@ -152,7 +152,7 @@ function update() {
 
   // computer plays for itself, and we must be able to beat it
   // simple AI
-  com.y += (ball.y - (com.y + com.height / 2)) * 0.075;
+  com.y += (ball.y - (com.y + com.height / 2)) * 0.068;
 
   // when the ball collides with bottom and top walls we inverse the y velocity.
   if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
@@ -177,7 +177,7 @@ function update() {
     // when the ball hits the center of the paddle we want the ball to take a 0degrees angle
     // when the ball hits the bottom of the paddle we want the ball to take a 45degrees
     // Math.PI/4 = 45degrees
-    let angleRad = (Math.PI / 4) * collidePoint;
+    let angleRad = (Math.PI / 3.5) * collidePoint;
 
     // change the X and Y velocity direction
     let direction = ball.x + ball.radius < canvas.width / 2 ? 1 : -1;
@@ -185,7 +185,7 @@ function update() {
     ball.velocityY = ball.speed * Math.sin(angleRad);
 
     // speed up the ball everytime a paddle hits it.
-    ball.speed += 0.1;
+    ball.speed += 0.15;
   }
 }
 
